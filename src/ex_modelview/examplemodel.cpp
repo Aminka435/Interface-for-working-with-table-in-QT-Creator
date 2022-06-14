@@ -23,21 +23,16 @@ void ExampleModel::fillDataTableFromFile(QString path)
     while(!inputStream.atEnd())
     {
         QString line = inputStream.readLine();
-        
+
         QList<QVariant> dataRow;
         int columnIdx = 0;
         for (QString& item : line.split(",")) {
-            if (columnIdx == 3
-             || columnIdx == 4
-             || columnIdx == 8
-             || columnIdx == 10
-             || columnIdx == 11)
+            if (columnIdx == 0
+             || columnIdx == 3
+             || columnIdx == 5
+             || columnIdx == 6)
             {
                 dataRow.append(item);
-            }
-            else if (columnIdx == 9)
-            {
-                dataRow.append(item.toDouble());
             }
             else
             {
@@ -49,6 +44,8 @@ void ExampleModel::fillDataTableFromFile(QString path)
     }
     inputFile.close();
 }
+
+
 
 void ExampleModel::saveDataTableToFile(QString path)
 {

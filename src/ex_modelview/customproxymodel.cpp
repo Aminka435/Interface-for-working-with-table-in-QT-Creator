@@ -3,32 +3,26 @@
 CustomProxyModel::CustomProxyModel(QObject *parent)
     : QSortFilterProxyModel{parent}
 {
-    maxFare = 1000;
-    minFare = -1;
+    minPrice = -1;
 }
 
 
 bool CustomProxyModel::filterAcceptsRow(int sourceRow,
                                               const QModelIndex &sourceParent) const
 {
-    QModelIndex indexFare = sourceModel()->index(sourceRow, 9, sourceParent);
+    QModelIndex indexPrice = sourceModel()->index(sourceRow, 1, sourceParent);
 
-    return fareInRange(sourceModel()->data(indexFare).toDouble());
+    return priceInRange(sourceModel()->data(indexPrice).toDouble());
 }
 
-bool CustomProxyModel::fareInRange(double fare) const
+bool CustomProxyModel::priceInRange(double price) const
 {
-    return fare >= minFare && fare < maxFare;
+    return price >= minPrice;
 }
 
-void CustomProxyModel::setFilterMinimumFare(double fare)
+void CustomProxyModel::setFilterMinimumPrice(double price)
 {
-    minFare = fare;
+    minPrice = price;
     invalidateFilter();
 }
 
-void CustomProxyModel::setFilterMaximumFare(double fare)
-{
-    maxFare = fare;
-    invalidateFilter();
-}

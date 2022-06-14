@@ -10,58 +10,37 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    QObject::connect(ui->loadButton, SIGNAL(clicked()), this, SLOT(loadFile()));
     QObject::connect(ui->deleteButton, SIGNAL(clicked()), this, SLOT(deleteRowSlot()));
-    QObject::connect(ui->saveButton, SIGNAL(clicked()), this, SLOT(saveFile()));
+    QObject::connect(ui->saveButton, SIGNAL(triggered()), this, SLOT(saveFile()));
     QObject::connect(ui->addRowButton, SIGNAL(clicked()), this, SLOT(addRowSlot()));
     QObject::connect(ui->actionLoad, SIGNAL(triggered()), this, SLOT(loadFile()));
     QObject::connect(ui->actionAbout, SIGNAL(triggered()), this, SLOT(showAbout()));
-    QObject::connect(ui->nameFilterlineEdit, SIGNAL(textChanged(const QString &)), this, SLOT(updateFilter(const QString &)));
-    QObject::connect(ui->lineEdit, SIGNAL(textChanged(const QString &)), this, SLOT(updateFilter2(const QString &)));
+    QObject::connect(ui->modelFilterlineEdit, SIGNAL(textChanged(const QString &)), this, SLOT(updateFilter(const QString &)));
     
-    QObject::connect(ui->fareFromSlider, SIGNAL(valueChanged(int)), this, SLOT(updateFilterMinFare(int)));
-    QObject::connect(ui->fareFromSlider, SIGNAL(valueChanged(int)), this, SLOT(updateFromLineEdit(int)));
-    QObject::connect(ui->fareToSlider, SIGNAL(valueChanged(int)), this, SLOT(updateFilterMaxFare(int)));
-
-    QObject::connect(ui->nameEdit, SIGNAL(editingFinished()), this, SLOT(setName()));
+    QObject::connect(ui->priceFromSlider, SIGNAL(valueChanged(int)), this, SLOT(updateFilterMinPrice(int)));
+    QObject::connect(ui->priceFromSlider, SIGNAL(valueChanged(int)), this, SLOT(updateFromLineEdit(int)));
     
     QObject::connect(ui->tableDetailsView, SIGNAL(clicked(QModelIndex)), this, SLOT(changeActiveRow(QModelIndex)));
     
 
     
     _exampleModel = new ExampleModel(this);
-//    ui->tableView->setModel(_exampleModel);
     
     proxyModel = new QSortFilterProxyModel(this);
     proxyModel2 = new QSortFilterProxyModel(this);
-    proxyModelFare = new CustomProxyModel(this);
-    
-    // _transposeModel = new QTransposeProxyModel(this);
+    proxyModelPrice = new CustomProxyModel(this);
+
     proxyModel->setSourceModel(_exampleModel);
     proxyModel2->setSourceModel(proxyModel);
-    proxyModelFare->setSourceModel(proxyModel2);
+    proxyModelPrice->setSourceModel(proxyModel2);
     
-    ui->tableDetailsView->setModel(proxyModelFare);
+    ui->tableDetailsView->setModel(proxyModelPrice);
     ui->tableDetailsView->setSortingEnabled(true);
 
-    // proxyModel->sort(2, Qt::AscendingOrder);
-    proxyModel->setFilterKeyColumn(3);
-    proxyModel2->setFilterKeyColumn(0);
+    proxyModel->setFilterKeyColumn(0);
+    proxyModel2->setFilterKeyColumn(3);
 
-// A common use case is to let the user specify the filter regular expression, wildcard pattern, or fixed string in a QLineEdit and to connect the textChanged() signal to setFilterRegularExpression(), setFilterWildcard(), or setFilterFixedString() to reapply the filter.
     
-    
-}
-
-void MainWindow::setName()
-{
-    QString newName = ui->nameEdit->text();
-    QModelIndex idx1 = ui->tableDetailsView->currentIndex();
-    QModelIndex idx2 = proxyModelFare->mapToSource(idx1);
-    QModelIndex idx3 = proxyModel2->mapToSource(idx2);
-    QModelIndex idx4 = proxyModel->mapToSource(idx3);
-    QModelIndex idxName = proxyModel->index(idx4.row(), 3);
-    _exampleModel->setData(idxName, newName);
 }
 
 void MainWindow::showAbout()
@@ -72,30 +51,26 @@ void MainWindow::showAbout()
 
 void MainWindow::updateFromLineEdit(int value)
 {
-    ui->fareFromLineEdit->setText(QVariant(value).toString());
+    ui->priceFromLineEdit->setText(QVariant(value).toString());
 }
+
 
 void MainWindow::deleteRowSlot()
 {
     QModelIndex idx1 = ui->tableDetailsView->currentIndex();
-    QModelIndex idx2 = proxyModelFare->mapToSource(idx1);
+    QModelIndex idx2 = proxyModelPrice->mapToSource(idx1);
     QModelIndex idx3 = proxyModel2->mapToSource(idx2);
     QModelIndex idx4 = proxyModel->mapToSource(idx3);
     _exampleModel->removeRow(idx4.row());
     
 }
 
-void MainWindow::updateFilterMinFare(int value)
+void MainWindow::updateFilterMinPrice(int value)
 {
-    proxyModelFare->setFilterMinimumFare(value);
+    proxyModelPrice->setFilterMinimumPrice(value);
     
 }
 
-void MainWindow::updateFilterMaxFare(int value)
-{
-    proxyModelFare->setFilterMaximumFare(value);
-    
-}
 
 void MainWindow::updateFilter(const QString & text)
 {
@@ -117,7 +92,7 @@ void MainWindow::loadFile()
                                                     "Data (*.csv)");
     _exampleModel->fillDataTableFromFile(fileName);
     
-//    ui->tableView->setModel(_exampleModel);
+
     proxyModel->setSourceModel(_exampleModel);
 
 }
@@ -138,7 +113,7 @@ void MainWindow::addRowSlot()
     if (d.exec() == QDialog::Accepted)
     {
         _exampleModel->appendRow(d.getNewRow());
-        // ui->tableDetailsView->hideColumn(proxyModel->columnCount() - 1);
+         ui->tableDetailsView->hideColumn(proxyModel->columnCount() - 1);
     }
 }
 
@@ -148,25 +123,17 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-
-void MainWindow::on_spinBox_valueChanged(int value)
-{
-    // ui->tableDetailsView->hideColumn(_shownDetailsColumn);
-    // _shownDetailsColumn = value;
-    // ui->tableDetailsView->setColumnHidden(value, false);
-}
-
-
 void MainWindow::on_tableView_doubleClicked(const QModelIndex &index)
 {
     
 }
 
 
-void MainWindow::on_fareFromSlider_valueChanged(int value)
+void MainWindow::on_priceFromSlider_valueChanged(int value)
 {
     
 }
+
 
 void MainWindow::changeActiveRow(const QModelIndex &index)
 {
@@ -177,6 +144,22 @@ void MainWindow::changeActiveRow(const QModelIndex &index)
     
     QVariant ageData = _exampleModel->data(ageIndex);
     
-    ui->label_4->setText(ageData.toString());
+}
+
+void MainWindow::on_mostExpensiveButton_clicked()
+{
+    ui->tableDetailsView->sortByColumn(1,Qt::DescendingOrder);
+}
+
+
+void MainWindow::on_leastExpensiveButton_clicked()
+{
+    ui->tableDetailsView->sortByColumn(1,Qt::AscendingOrder);
+}
+
+
+void MainWindow::on_alphabeticOrderButton_clicked()
+{
+    ui->tableDetailsView->sortByColumn(0,Qt::AscendingOrder);
 }
 

@@ -6,227 +6,257 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1003</width>
-    <height>583</height>
+    <width>817</width>
+    <height>592</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QGridLayout" name="gridLayout">
-    <item row="10" column="6" colspan="3">
-     <widget class="QGroupBox" name="fareGroupBox">
-      <property name="title">
-       <string>Fare</string>
-      </property>
-      <layout class="QVBoxLayout" name="verticalLayout">
-       <item>
-        <widget class="QLabel" name="fareFromLabel">
-         <property name="text">
-          <string>From</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QWidget" name="widget" native="true">
-         <layout class="QHBoxLayout" name="horizontalLayout">
-          <item>
-           <widget class="QLabel" name="fareFromMinLabel">
-            <property name="text">
-             <string>0</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QSlider" name="fareFromSlider">
-            <property name="maximum">
-             <number>600</number>
-            </property>
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLabel" name="fareFromMaLabel">
-            <property name="text">
-             <string>600</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLineEdit" name="fareFromLineEdit">
-            <property name="readOnly">
-             <bool>false</bool>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLabel" name="fareToLabel">
-         <property name="text">
-          <string>To</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QWidget" name="widget_2" native="true">
-         <layout class="QHBoxLayout" name="horizontalLayout_2">
-          <item>
-           <widget class="QLabel" name="fareToMinLabel">
-            <property name="text">
-             <string>0</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QSlider" name="fareToSlider">
-            <property name="maximum">
-             <number>600</number>
-            </property>
-            <property name="value">
-             <number>600</number>
-            </property>
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLabel" name="fareToMaxLabel">
-            <property name="text">
-             <string>600</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-    </item>
-    <item row="16" column="6">
-     <widget class="QLabel" name="label">
-      <property name="text">
-       <string>Name:</string>
-      </property>
-     </widget>
-    </item>
-    <item row="7" column="6" colspan="3">
-     <widget class="QSpinBox" name="spinBox">
-      <property name="maximum">
-       <number>999</number>
-      </property>
-     </widget>
-    </item>
-    <item row="4" column="1" rowspan="12" colspan="4">
-     <widget class="QTableView" name="tableDetailsView"/>
-    </item>
-    <item row="9" column="6">
-     <widget class="QLineEdit" name="nameEdit"/>
-    </item>
-    <item row="15" column="6">
-     <spacer name="verticalSpacer">
-      <property name="orientation">
-       <enum>Qt::Vertical</enum>
-      </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>20</width>
-        <height>40</height>
-       </size>
-      </property>
-     </spacer>
-    </item>
-    <item row="4" column="6" colspan="3">
-     <widget class="QPushButton" name="loadButton">
-      <property name="text">
-       <string>Load File</string>
-      </property>
-     </widget>
-    </item>
-    <item row="5" column="6" colspan="3">
-     <widget class="QPushButton" name="addRowButton">
-      <property name="text">
-       <string>Add row</string>
-      </property>
-     </widget>
-    </item>
-    <item row="8" column="6" colspan="3">
-     <widget class="QPushButton" name="pushButton">
-      <property name="text">
-       <string>PushButton</string>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="6" colspan="3">
-     <widget class="QPushButton" name="saveButton">
-      <property name="text">
-       <string>Save File</string>
-      </property>
-     </widget>
-    </item>
-    <item row="16" column="7">
-     <widget class="QLabel" name="label_2">
-      <property name="text">
-       <string>_______</string>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="3">
-     <widget class="QLineEdit" name="nameFilterlineEdit">
-      <property name="placeholderText">
-       <string>Enter name</string>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="4">
-     <widget class="QLineEdit" name="lineEdit">
-      <property name="placeholderText">
-       <string>Enter ID</string>
-      </property>
-     </widget>
-    </item>
-    <item row="6" column="6" colspan="3">
-     <widget class="QPushButton" name="deleteButton">
-      <property name="text">
-       <string>Delete selected row</string>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="1">
-     <widget class="QComboBox" name="comboBox">
-      <property name="placeholderText">
-       <string>Placeholder</string>
-      </property>
-     </widget>
-    </item>
-    <item row="17" column="6">
-     <widget class="QLabel" name="label_3">
-      <property name="text">
-       <string>Age:</string>
-      </property>
-     </widget>
-    </item>
-    <item row="17" column="7">
-     <widget class="QLabel" name="label_4">
-      <property name="text">
-       <string>_______</string>
-      </property>
-     </widget>
-    </item>
-   </layout>
+   <widget class="QGroupBox" name="priceGroupBox">
+    <property name="geometry">
+     <rect>
+      <x>330</x>
+      <y>70</y>
+      <width>241</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>Price</string>
+    </property>
+    <widget class="QWidget" name="widget_2" native="true">
+     <property name="geometry">
+      <rect>
+       <x>15</x>
+       <y>221</y>
+       <width>185</width>
+       <height>46</height>
+      </rect>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_2"/>
+    </widget>
+    <widget class="QLabel" name="priceFromLabel">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>30</y>
+       <width>31</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>From</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="fareFromMinLabel">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>30</y>
+       <width>16</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>0</string>
+     </property>
+    </widget>
+    <widget class="QSlider" name="priceFromSlider">
+     <property name="geometry">
+      <rect>
+       <x>70</x>
+       <y>31</y>
+       <width>101</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="maximum">
+      <number>1000000</number>
+     </property>
+     <property name="sliderPosition">
+      <number>0</number>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+    <widget class="QLabel" name="priceFromMaxLabel">
+     <property name="geometry">
+      <rect>
+       <x>180</x>
+       <y>30</y>
+       <width>81</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>1000000</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QTableView" name="tableDetailsView">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>200</y>
+      <width>701</width>
+      <height>321</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="addRowButton">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>20</y>
+      <width>121</width>
+      <height>121</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Sell </string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="deleteButton">
+    <property name="geometry">
+     <rect>
+      <x>600</x>
+      <y>50</y>
+      <width>131</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Delete selected row</string>
+    </property>
+   </widget>
+   <widget class="Line" name="line">
+    <property name="geometry">
+     <rect>
+      <x>140</x>
+      <y>10</y>
+      <width>20</width>
+      <height>151</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Vertical</enum>
+    </property>
+   </widget>
+   <widget class="Line" name="line_2">
+    <property name="geometry">
+     <rect>
+      <x>580</x>
+      <y>10</y>
+      <width>20</width>
+      <height>151</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Vertical</enum>
+    </property>
+   </widget>
+   <widget class="Line" name="line_3">
+    <property name="geometry">
+     <rect>
+      <x>310</x>
+      <y>10</y>
+      <width>16</width>
+      <height>151</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Vertical</enum>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="alphabeticOrderButton">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>20</y>
+      <width>151</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Alphabetic order</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="leastExpensiveButton">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>120</y>
+      <width>121</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Least expensive</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="mostExpensiveButton">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>70</y>
+      <width>141</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Most expensive</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="modelFilterlineEdit">
+    <property name="geometry">
+     <rect>
+      <x>330</x>
+      <y>40</y>
+      <width>241</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="placeholderText">
+     <string>Enter model</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>330</x>
+      <y>20</y>
+      <width>41</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Model</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="priceFromLineEdit">
+    <property name="geometry">
+     <rect>
+      <x>330</x>
+      <y>140</y>
+      <width>71</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="readOnly">
+     <bool>false</bool>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1003</width>
-     <height>23</height>
+     <width>817</width>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -234,6 +264,7 @@
      <string>File</string>
     </property>
     <addaction name="actionLoad"/>
+    <addaction name="saveButton"/>
    </widget>
    <widget class="QMenu" name="menuHelp">
     <property name="title">
@@ -253,6 +284,11 @@
   <action name="actionAbout">
    <property name="text">
     <string>About</string>
+   </property>
+  </action>
+  <action name="saveButton">
+   <property name="text">
+    <string>Save</string>
    </property>
   </action>
  </widget>

@@ -22,29 +22,34 @@ private slots:
     void loadFile();
     void saveFile();
     void addRowSlot();
-    
+
     void on_spinBox_valueChanged(int arg1);
     
     void on_tableView_doubleClicked(const QModelIndex &index);
     void updateFilter(const QString & text);
     void updateFilter2(const QString & text);
-    void updateFilterMinFare(int value);
-    void updateFilterMaxFare(int value);
+    void updateFilterMinPrice(int value);
     void updateFromLineEdit(int value);
     void showAbout();
-    void setName();
     
     void deleteRowSlot();
-    void on_fareFromSlider_valueChanged(int value);
+    void on_priceFromSlider_valueChanged(int value);
     
     void changeActiveRow(const QModelIndex &index);
-    
+
+    void on_mostExpensiveButton_clicked();
+
+    void on_leastExpensiveButton_clicked();
+
+    void on_alphabeticOrderButton_clicked();
+
+
 private:
     size_t _shownDetailsColumn;
     ExampleModel *_exampleModel;
     QSortFilterProxyModel *proxyModel;
     QSortFilterProxyModel *proxyModel2;
-    CustomProxyModel *proxyModelFare;
+    CustomProxyModel *proxyModelPrice;
     Ui::MainWindow *ui;
 };
 #endif // MAINWINDOW_H

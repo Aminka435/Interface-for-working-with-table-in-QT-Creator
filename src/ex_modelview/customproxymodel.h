@@ -10,21 +10,16 @@ class CustomProxyModel : public QSortFilterProxyModel
 public:
     CustomProxyModel(QObject *parent = nullptr);
 
-    double filterMinimumFare() const { return minFare; }
-    void setFilterMinimumFare(double fare);
-
-    double filterMaximumFare() const { return maxFare; }
-    void setFilterMaximumFare(double fare);
+    double filterMinimumPrice() const { return minPrice; }
+    void setFilterMinimumPrice(double price);
 
 protected:
     bool filterAcceptsRow(int sourceRow, const QModelIndex &sourceParent) const override;
-//    bool lessThan(const QModelIndex &left, const QModelIndex &right) const override;
 
 private:
-    bool fareInRange(double fare) const;
+    bool priceInRange(double price) const;
 
-    double minFare;
-    double maxFare;
+    double minPrice;
 };
 
 

@@ -10,7 +10,6 @@ class ExampleModel : public QAbstractTableModel
 public:
     explicit ExampleModel(QObject *parent = nullptr);
     
-    // Basic functionality:
     int rowCount(const QModelIndex &parent = QModelIndex()) const override;
     int columnCount(const QModelIndex &parent = QModelIndex()) const override;
     
@@ -24,11 +23,12 @@ public:
     Qt::ItemFlags flags(const QModelIndex& index) const override;
     
     void fillDataTableFromFile(QString path);
+    void appendRow(const QList<QString> &row);
     void saveDataTableToFile(QString path);
     void appendRow(const QList<QVariant> &row);
     void removeRow(int idx);
 private:
-    
+
     QList<QList<QVariant>> dataTable;
     QList<QString> headerList;
 };
