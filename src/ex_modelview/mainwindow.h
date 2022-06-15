@@ -22,8 +22,6 @@ private slots:
     void loadFile();
     void saveFile();
     void addRowSlot();
-
-    void on_spinBox_valueChanged(int arg1);
     
     void on_tableView_doubleClicked(const QModelIndex &index);
     void updateFilter(const QString & text);
