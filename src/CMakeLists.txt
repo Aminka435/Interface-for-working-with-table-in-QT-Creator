@@ -25,6 +25,7 @@ set(PROJECT_SOURCES
         ex_modelview/addrowdialog.cpp
         ex_modelview/addrowdialog.ui
         ex_modelview/customproxymodel.h
+        ex_modelview/customproxymodel.cpp
         ex_modelview/aboutdialog.h
         ex_modelview/aboutdialog.cpp
         ex_modelview/aboutdialog.ui
